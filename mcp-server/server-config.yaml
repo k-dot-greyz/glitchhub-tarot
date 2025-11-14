@@ -1,0 +1,18 @@
+mcp_server:
+  host: 0.0.0.0
+  port: 443
+  workspace: GLITCHHUB_TAROT
+  labs_integration:
+    enabled: true
+    api_url: https://labs.perplexity.ai/api/v1/
+    api_key: ""
+  context_chunking:
+    module_path: "../context-chunks/"
+    chunker: "chunking.js"
+    indexer: "dynamic-indexing.js"
+    max_chunk_size: 2048
+    min_chunk_size: 512
+  logging:
+    level: info
+    file: "/var/log/glitchhub_tarot_mcp.log"
+

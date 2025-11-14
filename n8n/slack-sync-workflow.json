@@ -1,0 +1,45 @@
+{
+  "name": "Slack Sync Linear",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "linear-sync",
+        "method": "POST"
+      },
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "channel": "glitchhub-tarot-notifications",
+        "text": "New Linear update: {{$json[\"title\"]}} ({{$json[\"state\"]}})",
+        "attachments": [
+          {
+            "fields": [
+              {
+                "title": "Assignee",
+                "value": "{{$json[\"assignee\"]}}",
+                "short": true
+              }
+            ]
+          }
+        ]
+      },
+      "name": "Send Slack Message",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [540, 300],
+      "credentials": {
+        "slackApi": "GlitchHub_SlackBot"
+      }
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [["Send Slack Message", "main", "0"]]
+    }
+  }
+}
+

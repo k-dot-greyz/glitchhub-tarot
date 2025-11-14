@@ -1,0 +1,21 @@
+{
+  "workspace": "GLITCHHUB_TAROT",
+  "projects": [
+    {
+      "name": "React App",
+      "defaultTeam": "dev-master",
+      "states": ["backlog", "in progress", "review", "done"],
+      "autoCloseDone": true,
+      "autoArchiveDone": true
+    }
+  ],
+  "automation": {
+    "webhooks": [
+      {
+        "url": "https://n8n.myserver.com/webhook/linear-sync",
+        "events": ["issue.created", "issue.updated", "issue.done"]
+      }
+    ]
+  }
+}
+
